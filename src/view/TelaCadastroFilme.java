@@ -5,13 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.FilmeController;
+
+import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
-import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -19,7 +26,7 @@ import java.awt.event.ActionEvent;
 public class TelaCadastroFilme extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textFieldNome;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -41,76 +48,107 @@ public class TelaCadastroFilme extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCadastroFilme() {
-		setTitle("Video Locadora Hora Da Pipoca");
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(400, 100, 800, 368);
+		setBounds(400, 100, 800, 723);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Cadastro De Ator");
-		lblNewLabel.setIcon(new ImageIcon(TelaCadastroFilme.class.getResource("/view/imagem/icon.png")));
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 32));
-		lblNewLabel.setBounds(216, 30, 415, 48);
-		contentPane.add(lblNewLabel);
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(128, 128, 128));
-		panel.setBounds(10, 99, 766, 221);
+		panel.setBounds(10, 110, 766, 564);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome: ");
+		JLabel lblNewLabel_1 = new JLabel("Título:");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setFont(new Font("Calibri", Font.BOLD, 24));
-		lblNewLabel_1.setBounds(36, 38, 72, 35);
+		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 24));
+		lblNewLabel_1.setBounds(81, 51, 70, 30);
 		panel.add(lblNewLabel_1);
 		
-		textFieldNome = new JTextField();
-		textFieldNome.setToolTipText("Nome do Ator");
-		textFieldNome.setFont(new Font("Calibri", Font.PLAIN, 18));
-		textFieldNome.setBounds(118, 41, 616, 28);
-		panel.add(textFieldNome);
-		textFieldNome.setColumns(10);
+		textField = new JTextField();
+		textField.setFont(new Font("Calibri", Font.PLAIN, 20));
+		textField.setBounds(159, 51, 518, 24);
+		panel.add(textField);
+		textField.setColumns(10);
 		
-		JLabel jLabelNacionalidade = new JLabel("Nacionalidade:");
-		jLabelNacionalidade.setForeground(Color.WHITE);
-		jLabelNacionalidade.setFont(new Font("Calibri", Font.BOLD, 24));
-		jLabelNacionalidade.setBounds(36, 94, 162, 35);
-		panel.add(jLabelNacionalidade);
+		JLabel lblNewLabel_1_1 = new JLabel("Gênero:");
+		lblNewLabel_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1.setFont(new Font("Calibri", Font.PLAIN, 24));
+		lblNewLabel_1_1.setBounds(81, 108, 79, 30);
+		panel.add(lblNewLabel_1_1);
 		
-		JComboBox comboBoxNacionalidade = new JComboBox();
-		comboBoxNacionalidade.setFont(new Font("Calibri", Font.PLAIN, 18));
-		comboBoxNacionalidade.setToolTipText("Selecione uma Nacionalidade");
-		comboBoxNacionalidade.setModel(new DefaultComboBoxModel(new String[] {"Selecione uma Nacionalidade", "Afeganistão", "África do Sul", "Akrotiri", "Albânia", "Alemanha", "Andorra", "Angola", "Anguila", "Antárctida", "Antígua e Barbuda", "Arábia Saudita", "Arctic Ocean", "Argélia", "Argentina", "Arménia", "Aruba", "Ashmore and Cartier Islands", "Atlantic Ocean", "Austrália", "Áustria", "Azerbaijão", "Baamas", "Bangladeche", "Barbados", "Barém", "Bélgica", "Belize", "Benim", "Bermudas", "Bielorrússia", "Birmânia", "Bolívia", "Bósnia e Herzegovina", "Botsuana", "Brasil", "Brunei", "Bulgária", "Burquina Faso", "Burúndi", "Butão", "Cabo Verde", "Camarões", "Camboja", "Canadá", "Catar", "Cazaquistão", "Chade", "Chile", "China", "Chipre", "Clipperton Island", "Colômbia", "Comores", "Congo-Brazzaville", "Congo-Kinshasa", "Coral Sea Islands", "Coreia do Norte", "Coreia do Sul", "Costa do Marfim", "Costa Rica", "Croácia", "Cuba", "Curacao", "Dhekelia", "Dinamarca", "Domínica", "Egipto", "Emiratos Árabes Unidos", "Equador", "Eritreia", "Eslováquia", "Eslovénia", "Espanha", "Estados Unidos", "Estónia", "Etiópia", "Faroé", "Fiji", "Filipinas", "Finlândia", "França", "Gabão", "Gâmbia", "Gana", "Gaza Strip", "Geórgia", "Geórgia do Sul e Sandwich do Sul", "Gibraltar", "Granada", "Grécia", "Gronelândia", "Guame", "Guatemala", "Guernsey", "Guiana", "Guiné", "Guiné Equatorial", "Guiné-Bissau", "Haiti", "Honduras", "Hong Kong", "Hungria", "Iémen", "Ilha Bouvet", "Ilha do Natal", "Ilha Norfolk", "Ilhas Caimão", "Ilhas Cook", "Ilhas dos Cocos", "Ilhas Falkland", "Ilhas Heard e McDonald", "Ilhas Marshall", "Ilhas Salomão", "Ilhas Turcas e Caicos", "Ilhas Virgens Americanas", "Ilhas Virgens Britânicas", "Índia", "Indian Ocean", "Indonésia", "Irão", "Iraque", "Irlanda", "Islândia", "Israel", "Itália", "Jamaica", "Jan Mayen", "Japão", "Jersey", "Jibuti", "Jordânia", "Kosovo", "Kuwait", "Laos", "Lesoto", "Letónia", "Líbano", "Libéria", "Líbia", "Listenstaine", "Lituânia", "Luxemburgo", "Macau", "Macedónia", "Madagáscar", "Malásia", "Malávi", "Maldivas", "Mali", "Malta", "Man, Isle of", "Marianas do Norte", "Marrocos", "Maurícia", "Mauritânia", "México", "Micronésia", "Moçambique", "Moldávia", "Mónaco", "Mongólia", "Monserrate", "Montenegro", "Mundo", "Namíbia", "Nauru", "Navassa Island", "Nepal", "Nicarágua", "Níger", "Nigéria", "Niue", "Noruega", "Nova Caledónia", "Nova Zelândia", "Omã", "Pacific Ocean", "Países Baixos", "Palau", "Panamá", "Papua-Nova Guiné", "Paquistão", "Paracel Islands", "Paraguai", "Peru", "Pitcairn", "Polinésia Francesa", "Polónia", "Porto Rico", "Portugal", "Quénia", "Quirguizistão", "Quiribáti", "Reino Unido", "República Centro-Africana", "República Dominicana", "Roménia", "Ruanda", "Rússia", "Salvador", "Samoa", "Samoa Americana", "Santa Helena", "Santa Lúcia", "São Bartolomeu", "São Cristóvão e Neves", "São Marinho", "São Martinho", "São Pedro e Miquelon", "São Tomé e Príncipe", "São Vicente e Granadinas", "Sara Ocidental", "Seicheles", "Senegal", "Serra Leoa", "Sérvia", "Singapura", "Sint Maarten", "Síria", "Somália", "Southern Ocean", "Spratly Islands", "Sri Lanca", "Suazilândia", "Sudão", "Sudão do Sul", "Suécia", "Suíça", "Suriname", "Svalbard e Jan Mayen", "Tailândia", "Taiwan", "Tajiquistão", "Tanzânia", "Território Britânico do Oceano Índico", "Territórios Austrais Franceses", "Timor Leste", "Togo", "Tokelau", "Tonga", "Trindade e Tobago", "Tunísia", "Turquemenistão", "Turquia", "Tuvalu", "Ucrânia", "Uganda", "União Europeia", "Uruguai", "Usbequistão", "Vanuatu", "Vaticano", "Venezuela", "Vietname", "Wake Island", "Wallis e Futuna", "West Bank", "Zâmbia", "Zimbabué"}));
-		comboBoxNacionalidade.setBounds(193, 97, 250, 29);
-		panel.add(comboBoxNacionalidade);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Selecione o Gênero", "Ação", "Animação", "Aventura", "Cinema de arte", "Chanchada", "Comédia", "Comédia romântica", "Comédia dramática", "Comédia de ação", "Dança", "Documentário", "Docuficção", "Drama", "Espionagem", "Faroeste", "Fantasia científica", "Ficção científica", "Filmes de guerra", "Filme policial", "Musical", "Romance", "Seriado", "Suspense", "Terror"}));
+		comboBox.setFont(new Font("Calibri", Font.PLAIN, 20));
+		comboBox.setBounds(170, 109, 206, 28);
+		panel.add(comboBox);
 		
-		JButton jButtonSalvar = new JButton("Salvar");
-		jButtonSalvar.setFont(new Font("Calibri", Font.PLAIN, 18));
-		jButtonSalvar.setBounds(118, 172, 93, 35);
-		panel.add(jButtonSalvar);
+		JLabel lblNewLabel_1_1_1 = new JLabel("Sinopse:");
+		lblNewLabel_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1_1.setFont(new Font("Calibri", Font.PLAIN, 24));
+		lblNewLabel_1_1_1.setBounds(81, 160, 92, 30);
+		panel.add(lblNewLabel_1_1_1);
 		
-		JButton jButtonLimpar = new JButton("Limpar");
-		jButtonLimpar.setFont(new Font("Calibri", Font.PLAIN, 18));
-		jButtonLimpar.setBounds(265, 172, 93, 35);
-		panel.add(jButtonLimpar);
+		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Calibri", Font.PLAIN, 20));
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
+		textArea.setTabSize(1);
+		textArea.setBounds(170, 168, 507, 151);
+		panel.add(textArea);
 		
-		JButton jButtonCancelar = new JButton("Cancelar");
-		jButtonCancelar.addActionListener(new ActionListener() {
+		JLabel lblNewLabel_1_1_1_1 = new JLabel("Duração:");
+		lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1_1_1.setFont(new Font("Calibri", Font.PLAIN, 24));
+		lblNewLabel_1_1_1_1.setBounds(81, 359, 92, 30);
+		panel.add(lblNewLabel_1_1_1_1);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(Integer.valueOf(0), null, null, Integer.valueOf(1)));
+		spinner.setFont(new Font("Calibri", Font.PLAIN, 20));
+		spinner.setBounds(179, 359, 52, 30);
+		panel.add(spinner);
+		
+		JButton btnNewButton = new JButton("Salvar");
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+				int duracao = Integer.parseInt(spinner.getValue().toString());
+				String genero = comboBox.getSelectedItem().toString();
+				boolean sucesso;
+				
+				}
 		});
-		jButtonCancelar.setFont(new Font("Calibri", Font.PLAIN, 18));
-		jButtonCancelar.setBounds(419, 172, 107, 35);
-		panel.add(jButtonCancelar);
+		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 24));
+		btnNewButton.setBounds(64, 451, 117, 39);
+		panel.add(btnNewButton);
 		
-		JButton jButtonConsultar = new JButton("Consultar");
-		jButtonConsultar.setFont(new Font("Calibri", Font.PLAIN, 18));
-		jButtonConsultar.setBounds(594, 172, 107, 35);
-		panel.add(jButtonConsultar);
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.setFont(new Font("Calibri", Font.PLAIN, 24));
+		btnLimpar.setBounds(227, 451, 117, 39);
+		panel.add(btnLimpar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Calibri", Font.PLAIN, 24));
+		btnCancelar.setBounds(390, 451, 117, 39);
+		panel.add(btnCancelar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		btnConsultar.setFont(new Font("Calibri", Font.PLAIN, 24));
+		btnConsultar.setBounds(553, 451, 137, 39);
+		panel.add(btnConsultar);
+		
+		JLabel lblNewLabel = new JLabel("Cadastro de Filme");
+		lblNewLabel.setIcon(new ImageIcon(TelaCadastroFilme.class.getResource("/view/imagem/icon.png")));
+		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 32));
+		lblNewLabel.setBounds(246, 34, 336, 65);
+		contentPane.add(lblNewLabel);
+	}
+	private static class __Tmp {
+		private static void __tmp() {
+			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
+		}
 	}
 }

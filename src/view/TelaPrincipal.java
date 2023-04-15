@@ -21,10 +21,8 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
-<<<<<<< HEAD
 import javax.swing.JButton;
-=======
->>>>>>> 710763fe1c2ce5e7c3381bbe92f87fcdb4a24a53
+
 
 public class TelaPrincipal extends JFrame {
 
