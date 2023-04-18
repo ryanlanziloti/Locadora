@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.AtorController;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -90,6 +93,14 @@ public class TelaCadastroAtor extends JFrame {
 		panel.add(comboBoxNacionalidade);
 		
 		JButton jButtonSalvar = new JButton("Salvar");
+		jButtonSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nome = textFieldNome.getText();
+				String nacionalidade = comboBoxNacionalidade.getSelectedItem().toString();
+				AtorController atorController = new AtorController();
+				atorController.cadastrarAtor(nome, nacionalidade);		
+			}
+		});
 		jButtonSalvar.setFont(new Font("Calibri", Font.PLAIN, 18));
 		jButtonSalvar.setBounds(118, 172, 93, 35);
 		panel.add(jButtonSalvar);

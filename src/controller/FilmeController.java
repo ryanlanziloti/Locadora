@@ -7,7 +7,7 @@ public class FilmeController {
 		if(titulo!=null&&titulo.length()>0&&genero!=null&&genero.length()>0&&
 			sinopse!=null&&sinopse.length()>0&&duracao>0) {
 			
-			Filme filme = new Filme();
+			Filme filme = new Filme();   
 			filme.cadastrarFilme(filme);
 			return true;
 			

@@ -1,27 +1,25 @@
 package view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
 import controller.FilmeController;
-
-import java.awt.Color;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaCadastroFilme extends JFrame {
 
@@ -117,8 +115,8 @@ public class TelaCadastroFilme extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int duracao = Integer.parseInt(spinner.getValue().toString());
 				String genero = comboBox.getSelectedItem().toString();
-				boolean sucesso;
-				
+				FilmeController filmeController = new FilmeController();
+				filmeController.cadastrarFilme(textField.getText(),genero,textArea.getText(), duracao);
 				}
 		});
 		btnNewButton.setFont(new Font("Calibri", Font.PLAIN, 24));
